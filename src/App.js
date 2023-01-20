@@ -1,13 +1,22 @@
 import Home from '../src/routes/home/home.component';
-import { Routes,Route } from 'react-router-dom';
+import Navagation from '../src/routes/navigaion/navigation.component';
+import { Routes,Route} from 'react-router-dom';
+
+const Shop = () => {
+  return (
+    <h1>Shoppnig page</h1>
+  )
+}
 
 const App = () => {
   return (
     <Routes >
-      <Route exact path='/' element={<Home />} />
+      <Route path='/' element={<Navagation/>}>
+        <Route index element={<Home />} />
+        <Route path='/shop' element={<Shop />} />
+      </Route>
     </Routes>
-)
-
+  );
 };
 
 export default App;
