@@ -6,7 +6,7 @@ const Signin = () => {
         console.log(response);
     }
     return (
-        <div>
+        <div> 
             <h1>Sign in</h1>
             <button onClick={logGoogleUser}>
                 Sign in with google Popup
