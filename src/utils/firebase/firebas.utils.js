@@ -4,7 +4,14 @@ import {
     signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider
+    
 } from 'firebase/auth';
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc
+} from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -25,5 +32,28 @@ provider.setCustomParameters({
 });
 
 export const auth = getAuth();
+export const signInGoogleWithPopup = () => signInWithPopup(auth, provider);
 
-export const signInGoogleWithPopup = () => signInWithPopup(auth,provider);
+const db = getFirestore();
+
+export const createUserDocumentfromAuth = async (userAuth) => {
+    const userDocRef = doc(db, 'users', userAuth.uid);
+    const userSnapshots = await getDoc(userDocRef);
+
+    if (!userSnapshots.exists()) {
+        const { displayName, email } = userAuth;
+        const createAt = new Date();
+
+        try {
+            await setDoc(userDocRef, {
+                displayName,
+                email,
+                createAt
+            })
+        } catch (error) {
+            console.log('error creating the user', error);
+        }
+    }
+    console.log(userSnapshots.exists());
+    return userDocRef;  
+}
