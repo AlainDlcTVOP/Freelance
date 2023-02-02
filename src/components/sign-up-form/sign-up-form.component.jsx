@@ -32,7 +32,7 @@ const SignUpForm = () => {
 
         } catch (error) {
             if (error.code === 'auth/email-already in use') {
-                alert('Cannot create a user');
+                alert('Cannot create a user!');
             } else {
                 console.log("use account",error);
             }
