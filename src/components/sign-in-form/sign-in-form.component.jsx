@@ -36,15 +36,21 @@ const SignInForm = () => {
         
         try {
             const response = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log(response)
+            console.log(response);
             resertFormFields();
         
         } catch (error) {
-           
-            
-        }
-
-    }
+            switch (error.code) {
+              case 'auth/wrong-password':
+                alert('incorrect password for email');
+                break;
+              case 'auth/user-not-found':
+                alert('no user associated with this email');
+                break;
+              default:
+            }
+          }
+        };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -72,7 +78,7 @@ const SignInForm = () => {
               
                 <div className="button-contianer">
                 <Button type="submit" >Sign In</Button>
-                <Button buttonType='google' onClick={signInWithGoogle}>Google Sign in</Button>
+                <Button type='button' buttonType='google' onClick={signInWithGoogle}>Google Sign in</Button>
               </div>
                 
             </form>
