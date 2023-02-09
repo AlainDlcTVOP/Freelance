@@ -17,6 +17,10 @@ const SignUpForm = () => {
     const { displayName, email, password, confirmPassword } = formFields;
 
 
+    const resertFormFields = () => {
+        setformFields(defualtFormFields);
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (password != confirmPassword) {
@@ -25,6 +29,7 @@ const SignUpForm = () => {
         }
         
         try {
+            resertFormFields();
             const { user } = await createAuthUserWithEmailAndPassword(
                 email,
                 password
