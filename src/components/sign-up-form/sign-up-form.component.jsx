@@ -1,7 +1,10 @@
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { useState } from "react";
-import { createAuthUserWithEmailAndPassword, createUserDocumentfromAuth } from "../../utils/firebase/firebas.utils";
+import {
+    createAuthUserWithEmailAndPassword,
+    createUserDocumentfromAuth
+} from "../../utils/firebase/firebas.utils";
 import './sign-up-form.styles.scss';
 
 const defualtFormFields = {
@@ -23,7 +26,7 @@ const SignUpForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             alert("password do not match");
             return;
         }
