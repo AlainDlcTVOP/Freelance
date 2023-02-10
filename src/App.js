@@ -3,9 +3,10 @@ import Navagation from '../src/routes/navigaion/navigation.component';
 import { Routes,Route} from 'react-router-dom';
 import Authentication from './routes/authentication/authentication.component';
 
+
 const Shop = () => {
   return (
-    <h1>Shoppnig page</h1>
+    <h1>Shopping page</h1>
   )
 }
 
