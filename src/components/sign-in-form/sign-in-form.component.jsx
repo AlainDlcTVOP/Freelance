@@ -17,7 +17,7 @@ const defualtFormFields = {
 const SignInForm = () => {
 
     const [formFields, setformFields] = useState(defualtFormFields);
-    const {  email, password } = formFields;
+    const {email, password } = formFields;
 
     const { setCurrentUser} = useContext(UserContext);
 
