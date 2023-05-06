@@ -13,8 +13,8 @@ const CartDropdown = () => {
   const navigate = useNavigate();
 
   const goToCheckoutHandler = () => {
-    navigate('/checkout')
-  }
+    navigate('/checkout');
+  };
 
   return (
     <div className='cart-dropdown-container'>
@@ -23,8 +23,9 @@ const CartDropdown = () => {
           <CartItem key={item.id} cartItem={item} />
         ))}
       </div>
-      <Button onClick={() => goToCheckoutHandler()} >GO TO CHECKOUT</Button>
+      <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
     </div>
   );
 };
+
 export default CartDropdown;
